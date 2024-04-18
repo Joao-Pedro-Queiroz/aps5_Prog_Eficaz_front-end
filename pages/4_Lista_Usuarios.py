@@ -15,9 +15,10 @@ if status_code_resposta == 200:
 
     st.title("Usuários cadastrados/Meus usuários")
 
-    df = pd.DataFrame(usuário)
+    df = pd.DataFrame(usuário["usuarios"])
 
     st.table(df)
+    print(usuário)
 elif status_code_resposta == 404:
     st.title(f"Erro 404")
     st.write("API não encontrada! Por favor, tente novamente")
