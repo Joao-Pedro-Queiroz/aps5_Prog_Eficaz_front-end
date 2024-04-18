@@ -19,6 +19,8 @@ cpf = st.text_input("CPF:", placeholder="Digite um cpf...")
 
 data_nascimento = st.text_input("Data de nascimento:", placeholder="Digite uma data de nascimento...")
 
+id = st.text_input("ID:", placeholder="Digite um id...")
+
 if st.button("Enviar:"):
     data = {}
 
@@ -31,7 +33,10 @@ if st.button("Enviar:"):
     if data_nascimento:
         data["data_nascimento"] = data_nascimento
 
-    if len(data) == 3:
+    if id:
+        data["id"] = id
+
+    if len(data) == 4:
         status_code = cadastra_usuário(data)
 
         if status_code in [200, 201]:
