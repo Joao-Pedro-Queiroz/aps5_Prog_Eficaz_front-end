@@ -38,27 +38,27 @@ if st.button("Buscar:"):
     else:
         st.warning("Por favor, insira um id válido.")
 
-if "usuario" in st.session_state and st.session_state['usuario']['usuario_aps_5']:
-    nome = st.text_input("Nome:", st.session_state['usuario']['usuario_aps_5']["nome"])
+if "usuario" in st.session_state and st.session_state['usuario']['bicicletas']:
+    nome = st.text_input("Nome:", st.session_state['usuario']['usuarios']["nome"])
 
-    cpf = st.text_input("CPF:", st.session_state['usuario']['usuario_aps_5']["cpf"])
+    cpf = st.text_input("CPF:", st.session_state['usuario']['usuarios']["cpf"])
 
-    data_nascimento = st.text_input("Data de nascimento:", st.session_state['usuario']['usuario_aps_5']["data_nascimento"])
+    data_nascimento = st.text_input("Data de nascimento:", st.session_state['usuario']['usuarios']["data_nascimento"])
 
     if st.button("Atualizar dados do livro"):
         data = {}
 
-        if nome != st.session_state['usuario']['usuario_aps_5']["nome"]:
+        if nome != st.session_state['usuario']['usuarios']["nome"]:
             data["nome"] = nome
 
-        if cpf != st.session_state['usuario']['usuario_aps_5']["cpf"]:
+        if cpf != st.session_state['usuario']['usuarios']["cpf"]:
             data["cpf"] = cpf
 
-        if data_nascimento != st.session_state['usuario']['usuario_aps_5']["data_nascimento"]:
+        if data_nascimento != st.session_state['usuario']['usuarios']["data_nascimento"]:
             data["data_nascimento"] = data_nascimento
 
         if len(data) > 0:
-            status_code = atualiza_usuario(st.session_state['usuario']['usuario_aps_5']["id"], data)
+            status_code = atualiza_usuario(st.session_state['usuario']['bicicletas']["id"], data)
 
             if status_code == 200:
                 del st.session_state['usuario']
@@ -69,7 +69,7 @@ if "usuario" in st.session_state and st.session_state['usuario']['usuario_aps_5'
             st.error("Por favor, altere algum dos dados para atualizar o usuario.")
 
     if st.button("Excluir livro"):
-        status_code = excluir_usuario(st.session_state['usuario']['usuario_aps_5']["id"])
+        status_code = excluir_usuario(st.session_state['usuario']['usuarios']["id"])
 
         if status_code == 200:
             del st.session_state['usuario']
@@ -77,7 +77,7 @@ if "usuario" in st.session_state and st.session_state['usuario']['usuario_aps_5'
         else:
             st.error(f"Erro {status_code}. Por favor, tente novamente.")
             
-elif "usuario" in st.session_state and st.session_state['usuario']['usuario_aps_5'] == {}:
+elif "usuario" in st.session_state and st.session_state['usuario']['bicicletas'] == {}:
     st.warning("Id não encontrado ou inválido. Por favor, verifique e tente novamente.")
-elif "usuario" in st.session_state and not st.session_state['usuario']['usuario_aps_5']:
+elif "usuario" in st.session_state and not st.session_state['usuario']['bicicletas']:
     st.warning("Erro 500! Por favor, tente novamente mais tarde.")
