@@ -29,7 +29,7 @@ def excluir_bicicleta(id):
 
 st.set_page_config(page_title="Dados Bicicleta")
 
-st.title(f"Dados do bicicleta")
+st.title(f"Dados da bicicleta")
 id = st.text_input("Id:", placeholder="Digite um id...")
 
 if st.button("Buscar:"):
