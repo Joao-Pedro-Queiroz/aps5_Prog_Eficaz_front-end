@@ -11,14 +11,13 @@ r = requests.get(url)
 status_code_resposta = r.status_code
 
 if status_code_resposta == 200:
-    usuário = r.json()
-
+    usuário = r.json()["usuarios"]
+    print(usuário)
     st.title("Usuários cadastrados/Meus usuários")
 
-    df = pd.DataFrame(usuário["usuarios"])
+    df = pd.DataFrame(usuário)
 
     st.table(df)
-    print(usuário)
 elif status_code_resposta == 404:
     st.title(f"Erro 404")
     st.write("API não encontrada! Por favor, tente novamente")

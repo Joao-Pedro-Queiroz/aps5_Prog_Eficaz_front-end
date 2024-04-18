@@ -11,11 +11,11 @@ r = requests.get(url)
 status_code_resposta = r.status_code
 
 if status_code_resposta == 200:
-    bicicletas = r.json()
+    bicicletas = r.json()["bicicletas"]
 
     st.title("Bicicletas cadastrados/Minhas bicicletas")
 
-    df = pd.DataFrame(bicicletas["bicicletas"])
+    df = pd.DataFrame(bicicletas)
 
     st.table(df)
 elif status_code_resposta == 404:

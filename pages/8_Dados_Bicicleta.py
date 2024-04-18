@@ -8,7 +8,7 @@ def get_bicicleta(id):
     response = requests.get(url)
     
     if response.status_code == 200:
-        return response.json()
+        return response.json()['bicicletas'][0]
     elif response.status_code in [400, 404]:
         return {}
     else:
@@ -38,27 +38,27 @@ if st.button("Buscar:"):
     else:
         st.warning("Por favor, insira um id válido.")
 
-if "bicicleta" in st.session_state and st.session_state['bicicleta']['bicicletas']:
-    marca = st.text_input("Marca:", st.session_state['bicicleta']['bicicletas']["marca"])
+if "bicicleta" in st.session_state and st.session_state['bicicleta']:
+    marca = st.text_input("Marca:", st.session_state['bicicleta']["marca"])
 
-    modelo = st.text_input("Modelo:", st.session_state['bicicleta']['bicicletas']["modelo"])
+    modelo = st.text_input("Modelo:", st.session_state['bicicleta']["modelo"])
 
-    cidade_alocada = st.text_input("Cidade alocada:", st.session_state['bicicleta']['bicicletas']["cidade_alocada"])
+    cidade_alocada = st.text_input("Cidade alocada:", st.session_state['bicicleta']["cidade_alocada"])
 
     if st.button("Atualizar dados do livro"):
         data = {}
 
-        if marca != st.session_state['bicicleta']['bicicletas']["marca"]:
+        if marca != st.session_state['bicicleta']["marca"]:
             data["marca"] = marca
 
-        if modelo != st.session_state['bicicleta']['bicicletas']["modelo"]:
+        if modelo != st.session_state['bicicleta']["modelo"]:
             data["modelo"] = modelo
 
-        if cidade_alocada != st.session_state['bicicleta']['bicicletas']["cidade_alocada"]:
+        if cidade_alocada != st.session_state['bicicleta']["cidade_alocada"]:
             data["cidade_alocada"] = cidade_alocada
 
         if len(data) > 0:
-            status_code = atualiza_bicicleta(st.session_state['bicicleta']['bicicletas']["id"], data)
+            status_code = atualiza_bicicleta(st.session_state['bicicleta']["id"], data)
 
             if status_code == 200:
                 del st.session_state['bicicleta']
@@ -69,7 +69,7 @@ if "bicicleta" in st.session_state and st.session_state['bicicleta']['bicicletas
             st.error("Por favor, altere algum dos dados para atualizar o usuario.")
 
     if st.button("Excluir livro"):
-        status_code = excluir_bicicleta(st.session_state['bicicleta']['bicicletas']["id"])
+        status_code = excluir_bicicleta(st.session_state['bicicleta']["id"])
 
         if status_code == 200:
             del st.session_state['bicicleta']
@@ -77,7 +77,7 @@ if "bicicleta" in st.session_state and st.session_state['bicicleta']['bicicletas
         else:
             st.error(f"Erro {status_code}. Por favor, tente novamente.")
             
-elif "bicicleta" in st.session_state and st.session_state['bicicleta']['bicicletas'] == {}:
+elif "bicicleta" in st.session_state and st.session_state['bicicleta'] == {}:
     st.warning("Id não encontrado ou inválido. Por favor, verifique e tente novamente.")
-elif "bicicleta" in st.session_state and not st.session_state['bicicleta']['bicicletas']:
+elif "bicicleta" in st.session_state and not st.session_state['bicicleta']:
     st.warning("Erro 500! Por favor, tente novamente mais tarde.")

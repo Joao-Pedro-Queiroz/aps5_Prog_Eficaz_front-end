@@ -11,11 +11,11 @@ r = requests.get(url)
 status_code_resposta = r.status_code
 
 if status_code_resposta == 200:
-    emprestimos = r.json()
+    emprestimos = r.json()["emprestimos"]
 
     st.title("Empréstimos cadastrados/Meus empréstimos")
 
-    df = pd.DataFrame(emprestimos["emprestimos"])
+    df = pd.DataFrame(emprestimos)
 
     st.table(df)
 elif status_code_resposta == 404:
