@@ -45,7 +45,7 @@ if "bicicleta" in st.session_state and st.session_state['bicicleta']:
 
     cidade_alocada = st.text_input("Cidade alocada:", st.session_state['bicicleta']["cidade_alocada"])
 
-    if st.button("Atualizar dados do livro"):
+    if st.button("Atualizar dados da bicicleta"):
         data = {}
 
         if marca != st.session_state['bicicleta']["marca"]:
@@ -68,7 +68,7 @@ if "bicicleta" in st.session_state and st.session_state['bicicleta']:
         else:
             st.error("Por favor, altere algum dos dados para atualizar o usuario.")
 
-    if st.button("Excluir livro"):
+    if st.button("Excluir bicicleta"):
         status_code = excluir_bicicleta(st.session_state['bicicleta']["id"])
 
         if status_code == 200:

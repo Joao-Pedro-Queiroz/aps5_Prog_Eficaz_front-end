@@ -45,7 +45,7 @@ if "usuario" in st.session_state and st.session_state['usuario']:
 
     data_nascimento = st.text_input("Data de nascimento:", st.session_state['usuario']["data_nascimento"])
 
-    if st.button("Atualizar dados do livro"):
+    if st.button("Atualizar dados do usuário"):
         data = {}
 
         if nome != st.session_state['usuario']["nome"]:
@@ -68,7 +68,7 @@ if "usuario" in st.session_state and st.session_state['usuario']:
         else:
             st.error("Por favor, altere algum dos dados para atualizar o usuario.")
 
-    if st.button("Excluir livro"):
+    if st.button("Excluir usuário"):
         status_code = excluir_usuario(st.session_state['usuario']["id"])
 
         if status_code == 200:
