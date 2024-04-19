@@ -13,16 +13,19 @@ st.set_page_config(page_title="Novo Usuario")
 
 st.title(f"Cadastrar novo usuário")
 
+id = st.text_input("ID:", placeholder="Digite um id...")
+
 nome = st.text_input("Nome:", placeholder="Digite um nome...")
 
 cpf = st.text_input("CPF:", placeholder="Digite um cpf...")
 
 data_nascimento = st.text_input("Data de nascimento:", placeholder="Digite uma data de nascimento...")
 
-id = st.text_input("ID:", placeholder="Digite um id...")
-
 if st.button("Enviar:"):
     data = {}
+
+    if id:
+        data["id"] = int(id)
 
     if nome:
         data["nome"] = nome
@@ -32,9 +35,6 @@ if st.button("Enviar:"):
 
     if data_nascimento:
         data["data_nascimento"] = data_nascimento
-
-    if id:
-        data["id"] = id
 
     if len(data) == 4:
         status_code = cadastra_usuário(data)

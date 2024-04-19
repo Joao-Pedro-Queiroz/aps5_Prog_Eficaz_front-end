@@ -12,7 +12,6 @@ status_code_resposta = r.status_code
 
 if status_code_resposta == 200:
     usuário = r.json()["usuarios"]
-    print(usuário)
     st.title("Usuários cadastrados/Meus usuários")
 
     df = pd.DataFrame(usuário)

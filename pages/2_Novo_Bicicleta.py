@@ -13,6 +13,8 @@ st.set_page_config(page_title="Nova Bicicleta")
 
 st.title(f"Cadastrar nova bicicleta")
 
+id = st.text_input("ID:", placeholder="Digite um id...")
+
 marca = st.text_input("Marca:", placeholder="Digite uma marca...")
 
 modelo = st.text_input("Modelo:", placeholder="Digite um modelo...")
@@ -21,6 +23,9 @@ cidade_alocada = st.text_input("Cidade alocada:", placeholder="Digite uma cidade
 
 if st.button("Enviar:"):
     data = {}
+
+    if id:
+        data["id"] = int(id)
 
     if marca:
         data["marca"] = marca
@@ -31,7 +36,7 @@ if st.button("Enviar:"):
     if cidade_alocada:
         data["cidade_alocada"] = cidade_alocada
 
-    if len(data) == 3:
+    if len(data) == 4:
         status_code = cadastra_bicicleta(data)
 
         if status_code in [200, 201]:

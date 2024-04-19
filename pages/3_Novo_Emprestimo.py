@@ -11,7 +11,10 @@ def cadastra_emprestimo(data):
 
 st.set_page_config(page_title="Novo Empréstimo")
 
+
 st.title(f"Cadastrar novo empréstimo")
+
+id = st.text_input("ID:", placeholder="Digite um id...")
 
 id_usuario = st.text_input("Id do usuário:", placeholder="Digite um id do usuário...")
 
@@ -22,6 +25,9 @@ data_alugado = st.text_input("Data do aluguel:", placeholder="Digite uma data do
 if st.button("Enviar:"):
     data = {}
 
+    if id:
+        data["id"] = int(id)
+
     if id_usuario:
         data["id_usuario"] = id_usuario
 
@@ -31,7 +37,7 @@ if st.button("Enviar:"):
     if data_alugado:
         data["data_alugado"] = data_alugado
 
-    if len(data) == 3:
+    if len(data) == 4:
         status_code = cadastra_emprestimo(data)
 
         if status_code in [200, 201]:
