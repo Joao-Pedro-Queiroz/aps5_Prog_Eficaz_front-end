@@ -3,8 +3,8 @@ import requests
 import pandas as pd
 
 
-def cadastra_emprestimo(data):
-    url = "http://127.0.0.1:5000/emprestimos"
+def cadastra_emprestimo(data, id_usuario, id_bike):
+    url = f"http://127.0.0.1:5000/emprestimos/usuarios/{id_usuario}/bikes/{id_bike}"
     r = requests.post(url, json=data)
     return r.status_code
 
@@ -28,17 +28,11 @@ if st.button("Enviar:"):
     if id:
         data["id"] = int(id)
 
-    if id_usuario:
-        data["id_usuario"] = id_usuario
-
-    if id_bicicleta:
-        data["id_bicicleta"] = id_bicicleta
-
     if data_alugado:
         data["data_alugado"] = data_alugado
 
-    if len(data) == 4:
-        status_code = cadastra_emprestimo(data)
+    if len(data) == 2:
+        status_code = cadastra_emprestimo(data, id_usuario, id_bicicleta)
 
         if status_code in [200, 201]:
             st.success(f"Empréstimo cadastrado com sucesso")
