@@ -45,6 +45,8 @@ if "bicicleta" in st.session_state and st.session_state['bicicleta']:
 
     cidade_alocada = st.text_input("Cidade alocada:", st.session_state['bicicleta']["cidade_alocada"])
 
+    status = st.text_input("Status da bicicleta:", st.session_state['bicicleta']["status"])
+
     if st.button("Atualizar dados da bicicleta"):
         data = {}
 
@@ -56,6 +58,9 @@ if "bicicleta" in st.session_state and st.session_state['bicicleta']:
 
         if cidade_alocada != st.session_state['bicicleta']["cidade_alocada"]:
             data["cidade_alocada"] = cidade_alocada
+
+        if status != st.session_state['bicicleta']["status"]:
+            data["status"] = status
 
         if len(data) > 0:
             status_code = atualiza_bicicleta(st.session_state['bicicleta']["id"], data)
