@@ -4,7 +4,7 @@ import pandas as pd
 
 
 def get_bicicleta(id):
-    url = f"http://127.0.0.1:5000/bikes/{id}"
+    url = f"https://aps5-prog-eficaz-back-end.onrender.com//bikes/{id}"
     response = requests.get(url)
     
     if response.status_code == 200:
@@ -16,13 +16,13 @@ def get_bicicleta(id):
     
 
 def atualiza_bicicleta(id, data):
-    url = f"http://127.0.0.1:5000/bikes/{id}"
+    url = f"https://aps5-prog-eficaz-back-end.onrender.com//bikes/{id}"
     r = requests.put(url, json=data)
     return r.status_code
 
 
 def excluir_bicicleta(id):
-    url = f"http://127.0.0.1:5000/bikes/{id}"
+    url = f"https://aps5-prog-eficaz-back-end.onrender.com//bikes/{id}"
     r = requests.delete(url)
     return r.status_code
 

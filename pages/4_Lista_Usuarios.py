@@ -5,7 +5,7 @@ import pandas as pd
 
 st.set_page_config(page_title="Lista Usuarios")
 
-url = "http://127.0.0.1:5000/usuarios"
+url = "https://aps5-prog-eficaz-back-end.onrender.com//usuarios"
 
 r = requests.get(url)
 status_code_resposta = r.status_code

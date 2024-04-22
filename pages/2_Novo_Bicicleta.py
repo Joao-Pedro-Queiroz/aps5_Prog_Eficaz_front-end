@@ -4,7 +4,7 @@ import pandas as pd
 
 
 def cadastra_bicicleta(data):
-    url = "http://127.0.0.1:5000/bikes"
+    url = "https://aps5-prog-eficaz-back-end.onrender.com//bikes"
     r = requests.post(url, json=data)
     return r.status_code
 

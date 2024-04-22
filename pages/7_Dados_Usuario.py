@@ -4,7 +4,7 @@ import pandas as pd
 
 
 def get_usuario(id):
-    url = f"http://127.0.0.1:5000/usuarios/{id}"
+    url = f"https://aps5-prog-eficaz-back-end.onrender.com//usuarios/{id}"
     response = requests.get(url)
     
     if response.status_code == 200:
@@ -16,13 +16,13 @@ def get_usuario(id):
     
 
 def atualiza_usuario(id, data):
-    url = f"http://127.0.0.1:5000/usuarios/{id}"
+    url = f"https://aps5-prog-eficaz-back-end.onrender.com//usuarios/{id}"
     r = requests.put(url, json=data)
     return r.status_code
 
 
 def excluir_usuario(id):
-    url = f"http://127.0.0.1:5000/usuarios/{id}"
+    url = f"https://aps5-prog-eficaz-back-end.onrender.com//usuarios/{id}"
     r = requests.delete(url)
     return r.status_code
 

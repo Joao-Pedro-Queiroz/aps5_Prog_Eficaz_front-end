@@ -4,7 +4,7 @@ import pandas as pd
 
 
 def cadastra_emprestimo(data, id_usuario, id_bike):
-    url = f"http://127.0.0.1:5000/emprestimos/usuarios/{id_usuario}/bikes/{id_bike}"
+    url = f"https://aps5-prog-eficaz-back-end.onrender.com//usuarios/{id_usuario}/bikes/{id_bike}"
     r = requests.post(url, json=data)
     return r.status_code
 

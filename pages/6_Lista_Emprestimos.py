@@ -5,7 +5,7 @@ import pandas as pd
 
 st.set_page_config(page_title="Lista Empréstimos")
 
-url = "http://127.0.0.1:5000/emprestimos"
+url = "https://aps5-prog-eficaz-back-end.onrender.com//emprestimos"
 
 st.title("Empréstimos cadastrados/Meus empréstimos")
 

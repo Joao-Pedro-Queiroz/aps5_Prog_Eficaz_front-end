@@ -10,7 +10,7 @@ id = st.text_input("Id:", placeholder="Digite um id...")
 
 if st.button("Excluir empréstimo"):
     if id:
-        url = f"http://127.0.0.1:5000/emprestimos/{id}"
+        url = f"https://aps5-prog-eficaz-back-end.onrender.com//emprestimos/{id}"
         r = requests.delete(url)
         status_code_resposta = r.status_code
 
