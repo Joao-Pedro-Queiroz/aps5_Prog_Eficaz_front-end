@@ -10,4 +10,13 @@ st.title("Empréstimo de bicicletas")
 
 st.write("Fique a vontade para usar nosso site para aluguar uma bicicleta para uso pessoal")
 
-st.write(":red[AVISO: Para essa aplicação front-end funcionar, é necessário que o back-end esteja rodando localmente em seu dispositivo]")
+st.markdown(
+    f"""
+    <style>
+    .reportview-container {{
+        background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
